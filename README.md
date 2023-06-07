@@ -12,6 +12,6 @@ When the program is run, it will look for a file in the directory it is ran name
     Help: This is an example help text
 
     [Database]
-    User: root
-    Pass: Kashdref4382
+    User: username
+    Pass: password
     Host: localhost
