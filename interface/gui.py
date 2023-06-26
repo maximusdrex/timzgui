@@ -12,6 +12,7 @@ import configparser
 HelpString = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
 HEADER_ROW = 0
 ROW_SIZE=0
+SCROLLBAR_SIZE=40
 
 class DataEntryGUI:
     def __init__(self, root, db):
@@ -107,6 +108,23 @@ def run():
     s.configure('TCombobox', font=buttonFont, arrowsize=20)
     s.configure('Table.TCheckbutton', background='white')
     s.configure('Table.TLabel', background='white')
+    s.element_create("My.Vertical.TScrollbar.trough", "from", "clam")
+    s.element_create("My.Vertical.TScrollbar.thumb", "from", "clam")
+    s.element_create("My.Vertical.TScrollbar.grip", "from", "clam")
+
+    s.layout("My.Vertical.TScrollbar",
+    [('My.Vertical.TScrollbar.trough',
+        {'children': [('My.Vertical.TScrollbar.thumb',
+                        {'unit': '1',
+                        'children':
+                            [('My.Vertical.TScrollbar.grip', {'sticky': ''})],
+                        'sticky': 'nswe'})
+                    ],
+        'sticky': 'ns'})])
+
+    s.configure("My.Vertical.TScrollbar", gripcount=0, borderwidth=2, arrowsize=SCROLLBAR_SIZE) #bordercolor='#252526', troughcolor='#252526', relief='sunken', gripinset=0, padding=0, background='#b0b0b0')
+
+
     root.option_add("*TCombobox*Listbox*Font", buttonFont)
 
     # Create an instance of the database manager

@@ -23,7 +23,7 @@ class SegmentWindow():
 
         self.db = db
         self.sel = sel
-        v = ttk.Scrollbar(parent, orient=VERTICAL)
+        v = ttk.Scrollbar(parent, orient=VERTICAL, style="My.Vertical.TScrollbar")
         self.canvas = Canvas(parent, yscrollcommand=v.set, background='white')
         self.canvas.grid(column=0, row=0, sticky=(N,S,E,W))
         parent.columnconfigure(0, weight=1)

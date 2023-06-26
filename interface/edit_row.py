@@ -23,14 +23,17 @@ class EditRow():
             self.trans.set(segment[0])
             self.length.set(segment[1])
             self.PPI.set(segment[2])
-            
-        self.transEntry = ttk.Entry(parent, textvariable=self.trans)
+        
+        # You can change the width of the entry boxes with the width parameter below:
+        self.transEntry = ttk.Entry(parent, textvariable=self.trans, width=8)
         if(not db.segmentTrans0(pid)):
             self.trans.set("0")
             self.transEntry.state(["readonly", "disabled"])
-        self.lengthEntry = ttk.Entry(parent, textvariable=self.length)
-        self.PPIEntry = ttk.Entry(parent, textvariable=self.PPI)
-        self.PauseEntry = ttk.Combobox(parent, textvariable=self.Pause)
+
+        # Width paramaters are also used here:
+        self.lengthEntry = ttk.Entry(parent, textvariable=self.length, width=8)
+        self.PPIEntry = ttk.Entry(parent, textvariable=self.PPI, width=8)
+        self.PauseEntry = ttk.Combobox(parent, textvariable=self.Pause, width=8)
         self.PauseEntry['values'] = ["Yes", "No"]
         self.PauseEntry.state(["readonly"])
         self.EditBtn = ttk.Button(parent, text="\u2713", command=self.confirm, style='Table.TButton')
@@ -39,7 +42,7 @@ class EditRow():
         self.items = [self.transEntry, self.lengthEntry, self.PPIEntry, self.PauseEntry, self.EditBtn]
         x = 1
         for i in self.items:
-            i.grid(column=x, row=row+1, ipadx=5, ipady=10)
+            i.grid(column=x, row=row+1, ipadx=5, ipady=8, pady=2, sticky=(N,S))
             parent.rowconfigure(x, minsize=ROW_SIZE)
             x += 1
 
